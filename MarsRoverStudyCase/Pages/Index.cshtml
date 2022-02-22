@@ -61,7 +61,7 @@
             var btnCss = "alert-primary";
             if(((ResponseData)ViewData["Result"]).Status == Models.Enums.StatusEnum.Error)
             {
-                btnCss = "alert-error";
+                btnCss = "alert-danger";
             }
 
             <div class="alert @btnCss mt-5" role="alert">
