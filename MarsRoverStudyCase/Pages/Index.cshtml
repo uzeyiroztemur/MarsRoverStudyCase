@@ -1,14 +1,61 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Anasayfa";
+    ViewData["Title"] = "Home Page";
 }
 
 <div class="row">
-    <div class="col-md-6">
-
+    <div class="col-md-12 pb-1">
+        <h3>Rectangle Size</h3>
     </div>
-    <div class="col-md-6">
-
+    <div class="col-md-2">
+        <div class="form-group">
+            <label>X</label>
+            <input class="form-control" name="">
+        </div>
     </div>
+    <div class="col-md-2">
+        <div class="form-group">
+            <label>Y</label>
+            <input class="form-control" name="">
+        </div>
+    </div>
+
+    <div class="col-md-12 pt-1 pb-3">
+        <h3>Position Info</h3>
+    </div>
+
+    <div class="col-md-2">
+        <div class="form-group">
+            <label>X Coordinate</label>
+            <input class="form-control" name="">
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group">
+            <label>Y Coordinate</label>
+            <input class="form-control" name="">
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group">
+            <label>Direction</label>
+            <input class="form-control" name="">
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group">
+            <label>String Of Letters</label>
+            <input class="form-control" name="">
+        </div>
+    </div>
+
+    <div class="col-md-12 pt-3 text-center">
+        <button type="button" class="btn btn-danger btn-lg">Run</button>
+    </div>
+
+    <div class="alert alert-primary mt-5" role="alert">
+        This is a primary alert—check it out!
+    </div>
+
 </div>
