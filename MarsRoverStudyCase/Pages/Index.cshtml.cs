@@ -24,7 +24,8 @@ namespace MarsRoverStudyCase.Pages
 
         public void OnPost(CaseModel StudyCase)
         {
-            ViewData["Status"] = CaseHelper.Calculate(StudyCase);
+            var res = CaseHelper.Calculate(StudyCase);
+            ViewData["Result"] = res;
         }
     }
 }

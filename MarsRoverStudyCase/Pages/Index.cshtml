@@ -53,13 +53,21 @@
             </div>
         </div>
 
-        <div class="col-md-12 pt-3 text-center">
+        <div class="col-md-12 pt-3">
             <button type="submit" class="btn btn-danger btn-lg">Submit</button>
         </div>
+        @if (((ResponseData)ViewData["Result"]).Data != string.Empty)
+        {
+            var btnCss = "alert-primary";
+            if(((ResponseData)ViewData["Result"]).Status == Models.Enums.StatusEnum.Error)
+            {
+                btnCss = "alert-error";
+            }
 
-        <div class="alert alert-primary mt-5" role="alert">
-            This is a primary alert—check it out!
-        </div>
+            <div class="alert @btnCss mt-5" role="alert">
+                <p>@(((ResponseData)ViewData["Result"]).Data)</p>
+            </div>
+        }
 
     </div>
 </form>

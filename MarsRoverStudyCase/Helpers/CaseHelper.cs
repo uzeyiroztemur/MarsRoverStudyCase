@@ -11,11 +11,13 @@ namespace MarsRoverStudyCase.Helpers
             var result = new ResponseData();
             try
             {
-
+                result.Data = "X:1 - Y:3 - Direction:N";
+                result.Status = Models.Enums.StatusEnum.Success;
             }
             catch (Exception ex)
             {
-
+                result.Data = ex.Message;
+                result.Status = Models.Enums.StatusEnum.Error;
             }
             return result;
         }
