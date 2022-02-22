@@ -1,61 +1,65 @@
 ﻿@page
 @model IndexModel
+
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="row">
-    <div class="col-md-12 pb-1">
-        <h3>Rectangle Size</h3>
-    </div>
-    <div class="col-md-2">
-        <div class="form-group">
-            <label>X</label>
-            <input class="form-control" name="">
-        </div>
-    </div>
-    <div class="col-md-2">
-        <div class="form-group">
-            <label>Y</label>
-            <input class="form-control" name="">
-        </div>
-    </div>
+<form method="post">
+    <div class="row">
 
-    <div class="col-md-12 pt-1 pb-3">
-        <h3>Position Info</h3>
-    </div>
-
-    <div class="col-md-2">
-        <div class="form-group">
-            <label>X Coordinate</label>
-            <input class="form-control" name="">
+        <div class="col-md-12 pb-1">
+            <h3>Rectangle Size</h3>
         </div>
-    </div>
-    <div class="col-md-2">
-        <div class="form-group">
-            <label>Y Coordinate</label>
-            <input class="form-control" name="">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label>X</label>
+                @Html.TextBoxFor(c => c.StudyCase.SizeInfo.X, new { @class = "form-control" })
+            </div>
         </div>
-    </div>
-    <div class="col-md-2">
-        <div class="form-group">
-            <label>Direction</label>
-            <input class="form-control" name="">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label>Y</label>
+                @Html.TextBoxFor(c => c.StudyCase.SizeInfo.Y, new { @class = "form-control" })
+            </div>
         </div>
-    </div>
-    <div class="col-md-2">
-        <div class="form-group">
-            <label>String Of Letters</label>
-            <input class="form-control" name="">
+
+        <div class="col-md-12 pt-1 pb-3">
+            <h3>Position Info</h3>
         </div>
-    </div>
 
-    <div class="col-md-12 pt-3 text-center">
-        <button type="button" class="btn btn-danger btn-lg">Run</button>
-    </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label>X Coordinate</label>
+                @Html.TextBoxFor(c => c.StudyCase.PositionInfo.X, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label>Y Coordinate</label>
+                @Html.TextBoxFor(c => c.StudyCase.PositionInfo.Y, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label>Direction</label>
+                @Html.TextBoxFor(c => c.StudyCase.PositionInfo.Direction, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label>String Of Letters</label>
+                @Html.TextBoxFor(c => c.StudyCase.PositionInfo.StringOfLetters, new { @class = "form-control" })
+            </div>
+        </div>
 
-    <div class="alert alert-primary mt-5" role="alert">
-        This is a primary alert—check it out!
-    </div>
+        <div class="col-md-12 pt-3 text-center">
+            <button type="submit" class="btn btn-danger btn-lg">Submit</button>
+        </div>
 
-</div>
+        <div class="alert alert-primary mt-5" role="alert">
+            This is a primary alert—check it out!
+        </div>
+
+    </div>
+</form>
