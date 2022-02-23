@@ -16,7 +16,7 @@ namespace MarsRoverStudyCase.Helpers
                 var validControl = ValidationControl(data);
                 if (validControl.Status == StatusEnum.Error)
                     return validControl;
-                
+
                 int positionX = data.PositionInfo.X;
                 int positionY = data.PositionInfo.Y;
                 var direction = GetDirectionByString(data.PositionInfo.Direction);
@@ -24,34 +24,55 @@ namespace MarsRoverStudyCase.Helpers
                 //Executing Commands
                 foreach (var command in data.PositionInfo.StringOfLetters)
                 {
-                    if(command == 'L')
+                    if (command == 'L')
                     {
                         direction = DirectionToLeft(direction);
                     }
-                    if (command == 'R')
+                    else if (command == 'R')
                     {
                         direction = DirectionToRight(direction);
                     }
                     else
                     {
                         if (direction == DirectionEnum.North)
-                            positionY++;
+                        {
+                            if (positionY < data.SizeInfo.Y)
+                                positionY++;
+                            else
+                                throw new Exception("Y goes out of the rectangle in the north direction.");
+                        }
                         else if (direction == DirectionEnum.South)
-                            positionY--;
+                        {
+                            if (positionY > 0)
+                                positionY--;
+                            else
+                                throw new Exception("Y goes out of the rectangle in the south direction.");
+                        }
                         else if (direction == DirectionEnum.East)
-                            positionX++;
+                        {
+                            if (positionX < data.SizeInfo.X)
+                                positionX++;
+                            else
+                                throw new Exception("X goes out of the rectangle in the east direction.");
+                        }
                         else
-                            positionX--;
+                        {
+                            if (positionX > 0)
+                                positionX--;
+                            else
+                                throw new Exception("X goes out of the rectangle in the west direction.");                            
+                        }
                     }
                 }
 
-                result.Data = $"{positionX} {positionY} {direction.ToString()[0]}";
+                result.Data.Add($"{positionX} {positionY} {direction.ToString()[0]}");
                 result.Status = StatusEnum.Success;
             }
             catch (Exception ex)
             {
-                result.Data = ex.Message;
+                result.Data = null;
                 result.Status = StatusEnum.Error;
+                result.Message = ex.Message;
             }
             return result;
         }
@@ -75,8 +96,9 @@ namespace MarsRoverStudyCase.Helpers
             }
             catch (Exception ex)
             {
-                result.Data = ex.Message;
+                result.Data = null;
                 result.Status = StatusEnum.Error;
+                result.Message = ex.Message;
             }
             return result;
         }

@@ -53,19 +53,31 @@
             </div>
         </div>
 
-        <div class="col-md-12 pt-3">
-            <button type="submit" class="btn btn-danger btn-lg">Submit</button>
+        <div class="col-md-12 pt-3 pb-3">
+            <button type="submit" class="btn btn-success btn-lg">Submit</button>
         </div>
-        @if (((ResponseData)ViewData["Result"]).Data != string.Empty)
-        {
-            var btnCss = "alert-primary";
-            if(((ResponseData)ViewData["Result"]).Status == Models.Enums.StatusEnum.Error)
-            {
-                btnCss = "alert-danger";
-            }
 
-            <div class="alert @btnCss mt-5" role="alert">
-                <p>@(((ResponseData)ViewData["Result"]).Data)</p>
+
+        @if (((ResponseData)ViewData["Result"]).Status == Models.Enums.StatusEnum.Success)
+        {
+            if (((ResponseData)ViewData["Result"]).Data != null)
+            {
+                foreach (var data in ((ResponseData)ViewData["Result"]).Data)
+                {
+                    <div class="col-md-12">
+                        <div class="alert alert-primary" role="alert">
+                            <p>@data</p>
+                        </div>
+                    </div>
+                }
+            }
+        }
+        else
+        {
+            <div class="col-md-12">
+                <div class="alert alert-danger" role="alert">
+                    <p>@(((ResponseData)ViewData["Result"]).Message)</p>
+                </div>
             </div>
         }
 
